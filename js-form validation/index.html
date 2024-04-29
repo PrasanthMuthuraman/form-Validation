@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+</head>
+<body>
+
+<h2>Form Validation</h2>
+
+<form onsubmit="func()">
+  <label for="username">Username:</label><br>
+  <input type="text" id="username" name="username"><br>
+  <span id="usernameError" style="color: red;"></span><br>
+
+  <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password"><br>
+  <span id="passwordError" style="color: red;"></span><br>
+
+<button type="submit">submit</button>
+</form>
+
+<script>
+ function func() {
+  var dump = true;
+  console.log("Entered statenent")
+
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  var usernameError = document.getElementById("usernameError");
+  var passwordError = document.getElementById("passwordError");
+
+  usernameError.textContent = "";
+  passwordError.textContent = "";
+
+
+  if (username.length < 4) {
+    usernameError.textContent = "Username should contain at least 4 characters.";
+    dump = false;
+    event.preventDefault();
+  } else if (username === "") {
+    usernameError.textContent = "Username cannot be empty.";
+    dump = false;
+    event.preventDefault();
+  }else{
+    dump = true;
+  }
+
+  
+  // Password validationb                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+  if (password.length < 6 || password.length > 12) {
+    passwordError.textContent = "Password should contain between 6 and 12 characters.";
+    dump = false;
+    event.preventDefault();
+  } else if (password === "") {
+    passwordError.textContent = "Password cannot be empty.";
+    dump = false;
+    event.preventDefault();
+  }else{
+    dump = true;
+  }
+
+
+  if(dump){
+    event.target.submit();
+  }
+}
+</script>
+
+</body>
+</html>
